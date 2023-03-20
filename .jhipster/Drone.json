@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20230319170003",
+  "clientRootFolder": "drone",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "drone",
+  "fields": [
+    {
+      "fieldName": "serialNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "model",
+      "fieldType": "Model",
+      "fieldValues": "Lightweight,Middleweight,Cruiserweight,Heavyweight"
+    },
+    {
+      "fieldName": "weightLimit",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "batteryCapacity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValues": "IDLE,LOADING,LOADED,DELIVERING,DELIVERED,RETURNING"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "drone",
+  "name": "Drone",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "medication",
+      "otherEntityRelationshipName": "drone",
+      "relationshipName": "medication",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

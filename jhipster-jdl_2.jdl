@@ -1,0 +1,35 @@
+
+entity Drone {
+	serialNumber String,
+    model Model,
+    weightLimit Long,
+	batteryCapacity Integer,
+    state State
+}
+
+entity Medication {
+	name String,
+    weght Integer,
+    code String,
+    image String
+}
+
+enum Model {
+    Lightweight, Middleweight, Cruiserweight, Heavyweight
+}
+
+enum State {
+    IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING
+}
+
+relationship OneToMany {
+	Drone{medication} to Medication
+}
+
+paginate Drone,Medication  with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
