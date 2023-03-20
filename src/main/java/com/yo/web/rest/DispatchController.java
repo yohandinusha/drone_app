@@ -62,7 +62,7 @@ public class DispatchController {
         }
         Drone result = droneService.save(drone);
         return ResponseEntity
-            .created(new URI("/api/drones/" + result.getId()))
+            .created(new URI("/api/drones/register" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
@@ -89,4 +89,18 @@ public class DispatchController {
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, medication.getId().toString()))
             .body(result);
     }
+
+    /**
+     * {@code GET  /drones/:id} : get the "id" drone.
+     *
+     * @param id the id of the drone to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the drone, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/drones/load-medication/{id}")
+    public ResponseEntity<Drone> getDrone(@PathVariable Long id) {
+        log.debug("REST request to get Drone : {}", id);
+        Optional<Drone> drone = droneService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(drone);
+    }
+    
 }

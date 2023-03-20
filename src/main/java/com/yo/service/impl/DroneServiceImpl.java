@@ -7,6 +7,8 @@ import com.yo.domain.enumeration.Model;
 import com.yo.domain.enumeration.State;
 import com.yo.repository.DroneRepository;
 import com.yo.service.DroneService;
+import com.yo.service.MedicationService;
+
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +28,11 @@ public class DroneServiceImpl implements DroneService {
 
     private final DroneRepository droneRepository;
 
-    public DroneServiceImpl(DroneRepository droneRepository) {
+    private final MedicationService medicationService;
+
+    public DroneServiceImpl(DroneRepository droneRepository,MedicationService medicationService) {
         this.droneRepository = droneRepository;
+        this.medicationService = medicationService;
     }
 
     @Override
@@ -57,7 +62,9 @@ public class DroneServiceImpl implements DroneService {
     public Drone updateMedication(Long id, Medication medication) {
         log.debug("Request to update Drone : {}", medication);
         Drone drone = droneRepository.findById(id).get();
-        drone.addMedication(medication);
+        medication = medicationService.save(medication);
+        drone = drone.addMedication(medication);
+        log.debug("RMeditation Loading : {}", medication, drone.getMedications().size());
         return droneRepository.save(drone);
     }
 

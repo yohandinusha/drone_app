@@ -23,7 +23,7 @@ public class Medication implements Serializable {
     private Long id;
 
     @Column(name = "name")
-    @Pattern(regexp="\\[a-zA-Z0-9_.-]*$")
+    //@Pattern(regexp="\\[a-zA-Z0-9_.-]*$")
     private String name;
 
     @Column(name = "weght")
