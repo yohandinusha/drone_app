@@ -1,11 +1,11 @@
 id;serial_number;model;weight_limit;battery_capacity;state
-1;violet asynchronous;Middleweight;19648;41108;LOADING
-2;teal;Cruiserweight;45297;80972;IDLE
-3;Open-source;Cruiserweight;82095;87753;IDLE
-4;Extended IB;Middleweight;1650;49541;LOADED
-5;methodologies;Heavyweight;54144;41444;DELIVERED
-6;Federation XSS support;Heavyweight;45393;26206;DELIVERING
-7;circuit Tasty Bacon;Heavyweight;5897;95493;DELIVERED
-8;Orchestrator;Heavyweight;4743;96693;IDLE
-9;parse;Cruiserweight;22503;36341;DELIVERING
-10;Franc killer Investment;Lightweight;71670;16801;IDLE
+1;violet asynchronous;Middleweight;200;90;LOADING
+2;teal;Cruiserweight;200;80;IDLE
+3;Open-source;Cruiserweight;50;50;IDLE
+4;Extended IB;Middleweight;300;34;LOADED
+5;methodologies;Heavyweight;500;32;DELIVERED
+6;Federation XSS support;Heavyweight;10;100;DELIVERING
+7;circuit Tasty Bacon;Heavyweight;100;20;DELIVERED
+8;Orchestrator;Heavyweight;50;90;IDLE
+9;parse;Cruiserweight;400;15;DELIVERING
+10;Franc killer Investment;Lightweight;10;35;IDLE

@@ -3,6 +3,8 @@ package com.yo.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
 
 /**
  * A Medication.
@@ -21,9 +23,11 @@ public class Medication implements Serializable {
     private Long id;
 
     @Column(name = "name")
+    @Pattern(regexp="\\[a-zA-Z0-9_.-]*$")
     private String name;
 
     @Column(name = "weght")
+    @Max(value=500)
     private Integer weght;
 
     @Column(name = "code")

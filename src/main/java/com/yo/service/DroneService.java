@@ -1,6 +1,8 @@
 package com.yo.service;
 
 import com.yo.domain.Drone;
+import com.yo.domain.Medication;
+
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +26,14 @@ public interface DroneService {
      * @return the persisted entity.
      */
     Drone update(Drone drone);
+
+     /**
+     * Updates a drone with medication.
+     *
+     * @param drone the entity to update.
+     * @return the persisted entity.
+     */
+    Drone updateMedication(Long id, Medication medication);
 
     /**
      * Partially updates a drone.

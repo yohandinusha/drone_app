@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 /**
  * A Drone.
@@ -25,6 +27,7 @@ public class Drone implements Serializable {
     private Long id;
 
     @Column(name = "serial_number")
+    @Size(max=100,min=10,message="criteria not met")
     private String serialNumber;
 
     @Enumerated(EnumType.STRING)
@@ -32,9 +35,11 @@ public class Drone implements Serializable {
     private Model model;
 
     @Column(name = "weight_limit")
+    @Max(value=500)
     private Long weightLimit;
 
     @Column(name = "battery_capacity")
+    @Max(value=100)
     private Integer batteryCapacity;
 
     @Enumerated(EnumType.STRING)

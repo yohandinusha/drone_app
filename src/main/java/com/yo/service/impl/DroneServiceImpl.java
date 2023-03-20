@@ -1,6 +1,10 @@
 package com.yo.service.impl;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.yo.domain.Drone;
+import com.yo.domain.Medication;
+import com.yo.domain.enumeration.Model;
+import com.yo.domain.enumeration.State;
 import com.yo.repository.DroneRepository;
 import com.yo.service.DroneService;
 import java.util.Optional;
@@ -29,12 +33,31 @@ public class DroneServiceImpl implements DroneService {
     @Override
     public Drone save(Drone drone) {
         log.debug("Request to save Drone : {}", drone);
+
+        if(drone.getWeightLimit() > 400 && drone.getWeightLimit() <= 500)
+            drone.setModel(Model.Heavyweight);
+        else if(drone.getWeightLimit() > 300 && drone.getWeightLimit() <= 400)
+            drone.setModel(Model.Cruiserweight); 
+        else if(drone.getWeightLimit() > 200 && drone.getWeightLimit() <= 300)
+            drone.setModel(Model.Middleweight);
+        else 
+            drone.setModel(Model.Lightweight); 
+            
+        drone.setState(State.IDLE);    
         return droneRepository.save(drone);
     }
 
     @Override
     public Drone update(Drone drone) {
         log.debug("Request to update Drone : {}", drone);
+        return droneRepository.save(drone);
+    }
+
+    @Override
+    public Drone updateMedication(Long id, Medication medication) {
+        log.debug("Request to update Drone : {}", medication);
+        Drone drone = droneRepository.findById(id).get();
+        drone.addMedication(medication);
         return droneRepository.save(drone);
     }
 

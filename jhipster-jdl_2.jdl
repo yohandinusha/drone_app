@@ -8,8 +8,8 @@ entity Drone {
 }
 
 entity Medication {
-	name String,
-    weght Integer,
+    name String,
+    weight Integer,
     code String,
     image String
 }
